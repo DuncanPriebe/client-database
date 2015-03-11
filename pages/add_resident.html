@@ -1,0 +1,57 @@
+<div id="wrapper">	
+	<h1>Add Resident</h1>
+	<p>Please fill out all of the required fields, then click the 'Add Resident' button</p>
+	<hr>
+	<form class="input_form" action="confirm_resident.php" method="post" />
+		<label>Name *</label><input type="text" name="name" required />
+		<br/>
+		<label>Sex *</label>
+			<input type="radio" name="sex" value="Male" required />Male
+			<input type="radio" name="sex" value="Female" required />Female		
+		<br/>
+		<label>Birth Date *</label><input type="date" name="birth_date" required />
+		<br/>
+		<label>Check-in Date *</label><input type="date" name="check_in_date" id="check_in_date" required />
+		<script>					
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0
+			var yyyy = today.getFullYear();			
+			if(dd<10) { // Make sure we have two-digit day and month values
+				dd='0'+dd
+			} 
+			if(mm<10) {
+				mm='0'+mm
+			}
+			var d = document.getElementById("check_in_date");
+			d.setAttribute("value", yyyy + "-" + mm + "-" + dd);	
+		</script>		
+		<br/>
+		<label>Contact Name *</label><input type="text" name="contact_name" required />
+		<br/>
+		<label>Contact Phone *</label><input type="text" name="contact_phone" required />
+		<br/>
+		<label>Building *</label>
+		<select name="building" required>
+			<option>Menno Home</option>
+			<option>Menno Hospital</option>	
+		</select>
+		<br/>
+		<label>Floor *</label>
+		<select name="floor" required>
+			<option>1</option>
+			<option>2</option>
+			<option>3</option>	
+		</select>
+		<br/>
+		<label>Room *</label><input type="number" min="0" name="room" required />
+		<br/>
+		<label>Bio *</label><textarea rows="5" cols="40" name="bio" required></textarea>
+		<br />		
+		<label></label><input type="submit" value="Add Resident" />	
+		<button class="linkbutton" type="button" onClick="location.href='welcome.php'">Main Menu</button>	
+		<button class="linkbutton" type="button" onClick="location.href='logout.php'">Sign Out</button>	
+	</form>
+	<br/>	
+	<p>* required field</p>
+</div>
